@@ -38,6 +38,7 @@ export default () => {
       storySlider = new Swiper(`.js-slider`, {
         slidesPerView: 2,
         slidesPerGroup: 2,
+        speed: 1000,
         pagination: {
           el: `.swiper-pagination`,
           type: `fraction`
