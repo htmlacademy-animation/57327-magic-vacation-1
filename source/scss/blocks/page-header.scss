@@ -277,12 +277,6 @@ body.loaded .page-header__logo {
       }
     }
 
-    &.active {
-      &::after {
-
-      }
-    }
-
     &:hover,
     &:focus {
       color: $c-purple;
