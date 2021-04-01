@@ -10486,6 +10486,7 @@ __webpack_require__.r(__webpack_exports__);
   const setSlider = function () {
     if (((window.innerWidth / window.innerHeight) < 1) || window.innerWidth < 769) {
       storySlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](`.js-slider`, {
+        speed: 0,
         pagination: {
           el: `.swiper-pagination`,
           type: `bullets`
@@ -10516,7 +10517,7 @@ __webpack_require__.r(__webpack_exports__);
       storySlider = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](`.js-slider`, {
         slidesPerView: 2,
         slidesPerGroup: 2,
-        speed: 1000,
+        speed: 0,
         pagination: {
           el: `.swiper-pagination`,
           type: `fraction`
