@@ -1,7 +1,30 @@
 .form {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: center; 
+  transition: width 0.5s ease-in;
+  width: 37.2rem;
+  margin-left: auto;
+
+  @media (min-width: $stop-scaling) {
+    width: 357px;
+  }
+
+  @media (orientation: portrait) {
+    width: 11.2rem;
+  }
+
+  @media (max-width: $tablet) and (orientation: landscape) {
+    width: 20.2rem;
+  }
+
+  @media (max-width: $mobile) and (orientation: landscape) {
+    width: 11.2rem;
+  }
+}
+
+.screen--game.active .form {
+  width: 100%;
 }
 
 .form__label {
@@ -29,12 +52,28 @@
   }
 }
 
+.form__field-hld {
+  margin-right: 3rem;
+  flex: 1 1 auto;
+
+  @media (min-width: $stop-scaling) {
+    margin-right: 30px;
+  }
+
+  @media (orientation: portrait) {
+    margin-right: 1rem;
+  }
+
+  @media (max-width: $mobile) and (orientation: landscape) {
+    margin-right: 1rem;
+  }
+}
+
+
 .form__field {
   flex: none;
-  margin-right: 3rem;
   padding: 0 5.6rem;
   height: 6rem;
-  width: calc(100% - 21rem);
   text-transform: uppercase;
   font: inherit;
   font-size: 2.4rem;
@@ -43,43 +82,50 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
+  display: block;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
 
   &:focus {
     border: 1px solid $c-purple;
   }
 
   @media (min-width: $stop-scaling) {
-    margin-right: 30px;
     padding: 0 56px;
     height: 60px;
-    width: calc(100% - 210px);
     font-size: 24px;
     border-radius: 30px;
   }
 
   @media (orientation: portrait) {
-    margin-right: 1rem;
     padding: 0 2.5rem;
-    width: calc(100% - 5rem);
     height: 4rem;
     font-size: 1.6rem;
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
-    width: calc(100% - 9rem);
+
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
-    margin-right: 1rem;
     padding: 0 2.5rem;
-    width: calc(100% - 5rem);
     height: 4rem;
     font-size: 1.6rem;
   }
 }
 
+.screen--game.active .form__field {
+  opacity: 1;
+}
+
 .form__button {
-  flex-grow: 1;
+  flex: 0 0 23rem;
+
+  @media (min-width: $stop-scaling) {
+    flex-basis: 215px;
+    line-height: 1.2;
+  }
 
   @media (orientation: portrait) {
     position: relative;
@@ -88,6 +134,7 @@
     width: 4rem;
     height: 4rem;
     font-size: 0;
+    flex-basis: 4rem;
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
@@ -97,11 +144,13 @@
     width: 6rem;
     height: 6rem;
     font-size: 0;
+    flex-basis: 6rem;
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
     width: 4rem;
     height: 4rem;
+    flex-basis: 4rem;
   }
 
   svg {
