@@ -21,3 +21,13 @@ social();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
+
+window.addEventListener('DOMContentLoaded', function () {
+    let bodyEl = document.getElementsByTagName('body')[0];
+    bodyEl.classList.add('loaded');
+    setTimeout(() => {
+        let pageHeaderEl = document.querySelector('.page-header__nav');
+        pageHeaderEl.classList.remove('start_state');
+    }, 500);
+    
+});
