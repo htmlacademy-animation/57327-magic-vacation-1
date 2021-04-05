@@ -34,20 +34,31 @@ export default class FullPageScroll {
   }
 
   changePageDisplay() {
-    this.changeVisibilityDisplay();
-    this.changeActiveMenuItem();
-    this.emitChangeDisplayEvent();
+    if (!this.screenElements[this.activeScreen].classList.contains('active')) {
+      this.changeVisibilityDisplay();
+      this.changeActiveMenuItem();
+      this.emitChangeDisplayEvent();
+    }
   }
 
   changeVisibilityDisplay() {
-    this.screenElements.forEach((screen) => {
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
-    });
-    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+    let changeTimeout = 0,
+        animateBgEl = document.querySelector('.bg-animation-screen');
+    if (document.querySelector('#story').classList.contains('active') && this.screenElements[this.activeScreen].getAttribute('id') == 'prizes') {
+      changeTimeout = 500;
+      animateBgEl.classList.add('animate');
+    }
     setTimeout(() => {
-      this.screenElements[this.activeScreen].classList.add(`active`);
-    }, 100);
+      animateBgEl.classList.remove('animate');
+      this.screenElements.forEach((screen) => {
+        screen.classList.add(`screen--hidden`);
+        screen.classList.remove(`active`);
+      });
+      this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+      setTimeout(() => {
+        this.screenElements[this.activeScreen].classList.add(`active`);
+      }, 100);
+    }, changeTimeout);
   }
 
   changeActiveMenuItem() {
