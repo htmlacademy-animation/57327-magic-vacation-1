@@ -34,15 +34,17 @@ export default class FullPageScroll {
   }
 
   changePageDisplay() {
-    this.changeVisibilityDisplay();
-    this.changeActiveMenuItem();
-    this.emitChangeDisplayEvent();
+    if (!this.screenElements[this.activeScreen].classList.contains('active')) {
+      this.changeVisibilityDisplay();
+      this.changeActiveMenuItem();
+      this.emitChangeDisplayEvent();
+    }
   }
 
   changeVisibilityDisplay() {
     let changeTimeout = 0,
         animateBgEl = document.querySelector('.bg-animation-screen');
-    if (document.querySelector('#story').classList.contains('active')) {
+    if (document.querySelector('#story').classList.contains('active') && this.screenElements[this.activeScreen].getAttribute('id') == 'prizes') {
       changeTimeout = 500;
       animateBgEl.classList.add('animate');
     }
