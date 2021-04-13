@@ -153,7 +153,6 @@
     border-radius: 50%;
     text-align: center;
     transform: scale(0);
-    transition: transform 0.33s cubic-bezier(0.53,1.28,0.59,1) 0s;
 
     @media (min-width: $stop-scaling) {
       top: 52px;
@@ -192,7 +191,6 @@
     line-height: 5rem;
     text-align: center;
     opacity: 0;
-    transition: opacity 0.23s cubic-bezier(0.33, 0, 0.67, 1) 0.06s;
 
     @media (min-width: $stop-scaling) {
       top: 52px;
@@ -227,7 +225,6 @@
     margin: 0;
     opacity: 0;
     transform: translateX(4rem);
-    transition: transform 0.56s cubic-bezier(0.34, 0, 0.11, 1) 0.12s, opacity 0.56s cubic-bezier(0.34, 0, 0.11, 1) 0.12s;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
@@ -235,31 +232,34 @@
   }
 }
 
-@for $i from 0 through 3 {
-  .rules__item:nth-child(#{$i + 1}):before { 
-    transition-delay: 0.1s * $i;
-  }
-
-  .rules__item:nth-child(#{$i + 1}):after { 
-    transition-delay: 0.1s * $i + 0.06s;
-  }
-
-  .rules__item:nth-child(#{$i + 1}) p { 
-    transition-delay: 0.1s * $i + 0.12s;
-  }
-}
-
 .screen--rules.active .rules__item:before {
   transform: scale(1);
+  transition: transform 0.33s cubic-bezier(0.53,1.28,0.59,1) 0s;
 }
 
 .screen--rules.active .rules__item:after {
   opacity: 1;
+  transition: opacity 0.23s cubic-bezier(0.33, 0, 0.67, 1) 0.06s;
 }
 
 .screen--rules.active .rules__item p {
   opacity: 1;
   transform: translateX(0rem);
+  transition: transform 0.56s cubic-bezier(0.34, 0, 0.11, 1) 0.12s, opacity 0.56s cubic-bezier(0.34, 0, 0.11, 1) 0.12s;
+}
+
+@for $i from 0 through 3 {
+  .screen--rules.active .rules__item:nth-child(#{$i + 1}):before { 
+    transition-delay: 0.16s * $i;
+  }
+
+  .screen--rules.active .rules__item:nth-child(#{$i + 1}):after { 
+    transition-delay: 0.16s * $i + 0.06s;
+  }
+
+  .screen--rules.active .rules__item:nth-child(#{$i + 1}) p { 
+    transition-delay: 0.16s * $i + 0.12s;
+  }
 }
 
 @keyframes rules_link {
