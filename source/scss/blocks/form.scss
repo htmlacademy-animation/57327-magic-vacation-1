@@ -23,7 +23,8 @@
   }
 }
 
-.screen--game.active .form {
+.screen--game.active .form,
+.screen--result.screen--show .form {
   width: 100%;
 }
 
@@ -68,7 +69,6 @@
     margin-right: 1rem;
   }
 }
-
 
 .form__field {
   flex: none;
@@ -115,7 +115,8 @@
   }
 }
 
-.screen--game.active .form__field {
+.screen--game.active .form__field,
+.screen--result.screen--show .form__field {
   opacity: 1;
 }
 
@@ -175,23 +176,40 @@
 }
 
 .form--result {
+  transition-duration: 0.533s;
+  transition-delay: 1s;
+  
+  .form__field-hld {
+    background: #fff;
+    border-radius: 3rem;
+    opacity: 0;
+    transition: opacity 0s ease 1s;
+  }
+
+  @media (min-width: $stop-scaling) {
+    border-radius: 30px;
+  }
+
   .form__field {
-    width: calc(100% - 31rem);
+    transition-duration: 0.167s;
+    transition-delay: 1.533s;
+  }
 
-    @media (min-width: $stop-scaling) {
-      width: calc(100% - 310px);
-    }
+  .form__button {
+    opacity: 0;
+    transition: opacity 0.167s ease 0.8s;
 
-    @media (orientation: portrait) {
-      width: calc(100% - 5rem);
-    }
-
-    @media (max-width: $tablet) and (orientation: landscape) {
-      width: calc(100% - 9rem);
-    }
-
-    @media (max-width: $mobile) and (orientation: landscape) {
-      width: calc(100% - 5rem);
+    span {
+      opacity: 0;
+      transition: opacity 0.167s ease 1s;
     }
   }
 }
+
+.screen--result.screen--show .form__field-hld,
+.screen--result.screen--show .form__button,
+.screen--result.screen--show .form__button span {
+  opacity: 1;
+}
+
+

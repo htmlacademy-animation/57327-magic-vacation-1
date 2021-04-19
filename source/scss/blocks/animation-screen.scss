@@ -37,3 +37,26 @@
     z-index: 8;
   }
 }
+
+.text__word {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-right: 0.2em;
+}
+
+.text__word > span {
+  display: inline-block;
+  vertical-align: top;
+  transform: translate3d(0, 1.3em, 0);
+}
+
+.screen--hidden .animate_words .text__word > span {
+  transition: none !important;
+  transform: translate3d(0, 1.3em, 0);
+}
+
+.screen.active .animate_words .text__word > span {
+  transform: translate3d(0, 0, 0);
+}

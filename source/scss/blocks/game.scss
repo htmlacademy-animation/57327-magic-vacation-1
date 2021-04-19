@@ -42,13 +42,17 @@
 }
 
 .game__title {
-  margin: 0;
+  margin: -0.147em 0 0;
   text-transform: uppercase;
   font-family: $font-alt;
   font-weight: 400;
   font-size: 4.8rem;
-  line-height: 0.906;
+  line-height: 1.2;
   letter-spacing: -0.04em;
+
+  .text__word {
+    padding-right: 0.04em;
+  }
 
   @media (min-width: $stop-scaling) {
     font-size: 48px;
