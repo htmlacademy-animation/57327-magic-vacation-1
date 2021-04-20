@@ -376,6 +376,7 @@ body.loaded .screen__footer {
   &.screen--show {
     opacity: 1;
     pointer-events: auto;
+    z-index: 5;
   }
 }
 
