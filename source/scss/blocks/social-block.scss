@@ -31,7 +31,7 @@
   color: $c-dark;
   border-radius: 50%;
   opacity: 0;
-  transition: opacity 0.05s ease 0.2s;
+  transition: opacity 0.05s ease 0.2s, color 0.267s ease 0s;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -53,7 +53,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
-    transition: width 0.3s ease, height 0.3s ease;
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.267s ease 0s, background-color 0.267s ease 0s;
   }
 
   svg {
@@ -113,6 +113,73 @@ body.loaded .social-block__toggler:hover:before {
 .page-header__nav.start_state .social-block__toggler::before {
   transition: transform 0.3s cubic-bezier(.48,.91,.73,1.28) 0.2s;
 }
+
+.theming.theme1 .social-block__toggler {
+color: $c-lp-bg;
+}
+
+.theming.theme1 .social-block__toggler:hover,
+.theming.theme1 .social-block--active .social-block__toggler,
+.theming.theme1 .social-block__toggler:focus,
+.theming.theme1 .social-block__toggler:active,
+.theming.theme1 .social-block__toggler:active:focus {
+color: $c-lp-hover;
+}
+
+.theming.theme1 .social-block__toggler:focus::before {
+border-color: $c-lp-hover;
+}
+
+.theming.theme1 .social-block__toggler:active::before,
+.theming.theme1 .social-block__toggler:active:focus::before {
+border-color: $c-lp-hover;
+background-color: $c-lp-hover;
+}
+
+.theming.theme2 .social-block__toggler {
+color: $c-b-bg;
+}
+
+.theming.theme2 .social-block__toggler:hover,
+.theming.theme2 .social-block--active .social-block__toggler,
+.theming.theme2 .social-block__toggler:focus,
+.theming.theme2 .social-block__toggler:active,
+.theming.theme2 .social-block__toggler:active:focus {
+color: $c-b-hover;
+}
+
+.theming.theme2 .social-block__toggler:focus::before {
+border-color: $c-b-hover;
+}
+
+.theming.theme2 .social-block__toggler:active::before,
+.theming.theme2 .social-block__toggler:active:focus::before {
+border-color: $c-b-hover;
+background-color: $c-b-hover;
+}
+
+.theming.theme3 .social-block__toggler {
+color: $c-lb-bg;
+}
+
+.theming.theme3 .social-block__toggler:hover,
+.theming.theme3 .social-block--active .social-block__toggler,
+.theming.theme3 .social-block__toggler:focus,
+.theming.theme3 .social-block__toggler:active,
+.theming.theme3 .social-block__toggler:active:focus {
+color: $c-lb-hover;
+}
+
+.theming.theme3 .social-block__toggler:focus::before {
+border-color: $c-lb-hover;
+}
+
+.theming.theme3 .social-block__toggler:active::before,
+.theming.theme3 .social-block__toggler:active:focus::before {
+border-color: $c-lb-hover;
+background-color: $c-lb-hover;
+}
+
 
 .social-block__list {
   @include list-reset;
@@ -257,7 +324,6 @@ body.loaded .social-block__toggler:hover:before {
       }
     }
   }
-
   &--insta {
     svg {
       width: 1.5rem;
@@ -282,4 +348,31 @@ body.loaded .social-block__toggler:hover:before {
     }
   }
 
+}
+
+.theming.theme1 .social-block__link {
+  &:hover { color: $c-lp-hover; }
+
+  &:focus { color: $c-lp-hover; border-color: $c-lp-hover; }
+
+  &:active,
+  &:active:focus { color: $c-lp-hover; }
+}
+
+.theming.theme2 .social-block__link {
+  &:hover { color: $c-b-hover; }
+
+  &:focus { color: $c-b-hover; border-color: $c-b-hover; }
+
+  &:active,
+  &:active:focus { color: $c-b-hover; }
+}
+
+.theming.theme3 .social-block__link {
+  &:hover { color: $c-lb-hover; }
+
+  &:focus { color: $c-lb-hover; border-color: $c-lb-hover; }
+
+  &:active,
+  &:active:focus { color: $c-lb-hover; }
 }
