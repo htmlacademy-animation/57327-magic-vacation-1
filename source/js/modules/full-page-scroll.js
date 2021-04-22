@@ -43,12 +43,42 @@ export default class FullPageScroll {
 
   changeVisibilityDisplay() {
     let changeTimeout = 0,
-        animateBgEl = document.querySelector('.bg-animation-screen');
+        animateBgEl = document.querySelector('.bg-animation-screen'),
+        bodyEl = document.getElementsByTagName('body')[0];
+
+    let activeScreenFooter = document.querySelector('.screen.active .screen__footer, .screen.active .screen__disclaimer');
+    if (activeScreenFooter) {
+      changeTimeout = 200;
+
+      if (document.querySelector('#prizes').classList.contains('active') && this.screenElements[this.activeScreen].getAttribute('id') == 'rules') {
+        document.querySelector('#rules .screen__disclaimer').classList.add('fading-in');
+        activeScreenFooter.classList.add('fading');
+        document.getElementsByTagName('body')[0].classList.add('footer_bg');
+      } else {
+          if(document.querySelector('#rules').classList.contains('active') && this.screenElements[this.activeScreen].getAttribute('id') == 'prizes') {
+            document.querySelector('#prizes .screen__footer').classList.add('fading-in');
+            activeScreenFooter.classList.add('fading');
+            document.getElementsByTagName('body')[0].classList.add('footer_bg');
+          } else {
+            activeScreenFooter.classList.add('hiding');
+          }
+      }
+    }
+
     if (document.querySelector('#story').classList.contains('active') && this.screenElements[this.activeScreen].getAttribute('id') == 'prizes') {
       changeTimeout = 500;
       animateBgEl.classList.add('animate');
     }
+
+    if (this.screenElements[this.activeScreen].getAttribute('id') == 'story') {
+      bodyEl.classList.add('theming');
+    } else {
+      bodyEl.classList.remove('theming');
+    }
+
     setTimeout(() => {
+      if (activeScreenFooter) activeScreenFooter.classList.remove('hiding', 'fading');
+
       animateBgEl.classList.remove('animate');
       this.screenElements.forEach((screen) => {
         screen.classList.add(`screen--hidden`);
@@ -57,7 +87,13 @@ export default class FullPageScroll {
       this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
       setTimeout(() => {
         this.screenElements[this.activeScreen].classList.add(`active`);
-      }, 100);
+
+        setTimeout(() => {
+          document.querySelector('#prizes .screen__footer').classList.remove(`fading-in`);
+          document.querySelector('#rules .screen__disclaimer').classList.remove(`fading-in`);
+          document.getElementsByTagName('body')[0].classList.remove('footer_bg');
+        }, 200);
+      }, 10);
     }, changeTimeout);
   }
 
