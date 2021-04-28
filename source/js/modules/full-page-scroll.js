@@ -88,6 +88,15 @@ export default class FullPageScroll {
       setTimeout(() => {
         this.screenElements[this.activeScreen].classList.add(`active`);
 
+        if (this.screenElements[this.activeScreen].getAttribute('id') == 'prizes') {
+          const primaryAward = document.getElementById('primary-award'),
+                rootAnim = document.getElementById('rootAnim');
+          if (!primaryAward.classList.contains('play')) {
+            primaryAward.classList.add('play');
+            rootAnim.beginElement();
+          }
+        }
+
         setTimeout(() => {
           document.querySelector('#prizes .screen__footer').classList.remove(`fading-in`);
           document.querySelector('#rules .screen__disclaimer').classList.remove(`fading-in`);
