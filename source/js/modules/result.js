@@ -1,6 +1,19 @@
 export default () => {
   let showResultEls = document.querySelectorAll(`.js-show-result`);
   let results = document.querySelectorAll(`.screen--result`);
+
+  const WinAnimationElement = document.querySelector('#winTitleAnim'),
+        WinAnimationElement2 = document.querySelector('#winTitleAnim2'),
+        WinAnimationElement3 = document.querySelector('#winTitleAnim3');
+  
+  let WinPaths = document.querySelectorAll('.screen--result .result__title svg path');
+  [].slice.call(WinPaths).forEach(function (el) {
+    let pathLength = Math.round(el.getTotalLength());
+    el.setAttribute('stroke-dasharray', '0 ' + pathLength/2);
+    let pathAnim = el.querySelector('animate');
+    if (pathAnim) pathAnim.setAttribute('values', '0 ' + pathLength/2 + '; ' + pathLength/2 + ' 0');
+  });
+
   if (results.length) {
     for (let i = 0; i < showResultEls.length; i++) {
       showResultEls[i].addEventListener(`click`, function () {
@@ -14,6 +27,16 @@ export default () => {
         });
         targetEl[0].classList.add(`screen--show`);
         targetEl[0].classList.remove(`screen--hidden`);
+
+        if (target == 'result') {
+          WinAnimationElement.beginElement();
+        }
+        if (target == 'result2') {
+          WinAnimationElement2.beginElement();
+        }
+        if (target == 'result3') {
+          WinAnimationElement3.beginElement();
+        }
       });
     }
 
