@@ -1,4 +1,44 @@
 export default () => {
+
+  let fps = 24,
+      fpsInterval = 1000 / fps;
+  let now,
+      then = Date.now(),
+      start = Date.now(),
+      elapsed;
+  let finalTime = 1000*60*5;
+
+  function draw() {
+    let minEldocument = document.querySelector('.game__counter-min'),
+        secEldocument = document.querySelector('.game__counter-sec');
+    
+    let timeNow = parseInt((finalTime - (Date.now() - start))/1000),
+        secNow = timeNow%60,
+        minNow = (timeNow - secNow)/60;
+
+    if (timeNow >= 0) {
+      minEldocument.innerHTML = '';
+      minEldocument.appendChild(document.createTextNode((minNow > 10) ? minNow : '0' + minNow));
+
+      secEldocument.innerHTML = '';
+      secEldocument.appendChild(document.createTextNode((secNow > 10) ? secNow : '0' + secNow));
+    }
+  }
+
+  function tick() {
+    requestAnimationFrame(tick);
+
+    now = Date.now();
+    elapsed = now - then;
+
+    if (elapsed > fpsInterval) {
+      then = now - (elapsed % fpsInterval);
+      draw();
+    }
+  }
+
+  requestAnimationFrame(tick);
+
   let showResultEls = document.querySelectorAll(`.js-show-result`);
   let results = document.querySelectorAll(`.screen--result`);
 
