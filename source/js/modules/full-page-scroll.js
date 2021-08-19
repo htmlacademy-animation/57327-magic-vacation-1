@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import prizeNumbers from './prize-numbers.js';
 
 export default class FullPageScroll {
   constructor() {
@@ -10,6 +11,8 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+
+    this.prizeAnimationStart = false;
   }
 
   init() {
@@ -88,12 +91,11 @@ export default class FullPageScroll {
       setTimeout(() => {
         this.screenElements[this.activeScreen].classList.add(`active`);
 
-        if (this.screenElements[this.activeScreen].getAttribute('id') == 'prizes') {
-          const primaryAward = document.getElementById('primary-award'),
-                rootAnim = document.getElementById('rootAnim');
-          if (!primaryAward.classList.contains('play')) {
-            primaryAward.classList.add('play');
-            rootAnim.beginElement();
+        if (this.screenElements[this.activeScreen].getAttribute('id') == 'prizes') {               
+          if (!this.prizeAnimationStart) {
+            this.prizeAnimationStart = true;
+            const prizeNum = new prizeNumbers();
+            prizeNum.tick();
           }
         }
 
