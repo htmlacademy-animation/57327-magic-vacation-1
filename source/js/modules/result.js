@@ -1,3 +1,5 @@
+import Scene2DSeaCalf from './scene-2d-sea-calf.js';
+
 export default () => {
 
   let fps = 24,
@@ -54,6 +56,8 @@ export default () => {
     if (pathAnim) pathAnim.setAttribute('values', '0 ' + pathLength/2 + '; ' + pathLength/2 + ' 0');
   });
 
+  const resultScene = new Scene2DSeaCalf();
+
   if (results.length) {
     for (let i = 0; i < showResultEls.length; i++) {
       showResultEls[i].addEventListener(`click`, function () {
@@ -70,6 +74,7 @@ export default () => {
 
         if (target == 'result') {
           WinAnimationElement.beginElement();
+          resultScene.start();          
         }
         if (target == 'result2') {
           WinAnimationElement2.beginElement();
