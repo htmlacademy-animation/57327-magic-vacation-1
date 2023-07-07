@@ -258,16 +258,14 @@ export default class Scene2DSeaCalf extends Scene2D {
   initSnowflakesAnimations() {
     this.animations.push(new Animation({
       func: (progress, details) => {
-        this.objects.snowflake.transforms.translateY =
-          2 * Math.sin(1.5 * (details.currentTime - details.startTime) / 1000);
+        this.objects.snowflake.transforms.translateY = 2 * Math.sin(1.5 * (details.currentTime - details.startTime) / 1000);
       },
       duration: `infinite`
     }));
 
     this.animations.push(new Animation({
       func: (progress, details) => {
-        this.objects.snowflake2.transforms.translateY =
-          2 * Math.sin(1.5 * (details.currentTime - details.startTime) / 1000);
+        this.objects.snowflake2.transforms.translateY = 2 * Math.sin(1.5 * (details.currentTime - details.startTime) / 1000);
       },
       duration: `infinite`,
       delay: 800
