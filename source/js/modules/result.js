@@ -1,4 +1,5 @@
 import Scene2DSeaCalf from './scene-2d-sea-calf.js';
+import Scene2DCrocodile from './scene-2d-crocodile.js';
 
 export default () => {
 
@@ -57,6 +58,7 @@ export default () => {
   });
 
   const resultScene = new Scene2DSeaCalf();
+  const resulcSceneBad = new Scene2DCrocodile();
 
   if (results.length) {
     for (let i = 0; i < showResultEls.length; i++) {
@@ -81,6 +83,7 @@ export default () => {
         }
         if (target == 'result3') {
           WinAnimationElement3.beginElement();
+          resulcSceneBad.start();
         }
       });
     }
